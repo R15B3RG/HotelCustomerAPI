@@ -22,9 +22,11 @@ namespace HotelCustomerAPI
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            _logger.LogInformation("ExecuteAsync called}");
             var consumer = new EventingBasicConsumer(_rabbitMqService.Channel);
             consumer.Received += async (model, args) =>
             {
+                _logger.LogInformation("Consumer registered to queue: {QueueName}");
                 using var scope = _scopeFactory.CreateScope();
                 var repository = scope.ServiceProvider.GetRequiredService<ICustomerRepository>();
 
