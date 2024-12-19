@@ -17,4 +17,4 @@ app.MapGet("/customers", async (ICustomerRepository repo, int start, int count) 
     return await repo.GetManyAsync(start, count);
 });
 
-app.Run("http://0.0.0.0:5050");
+app.Run("http://0.0.0.0:6050");
